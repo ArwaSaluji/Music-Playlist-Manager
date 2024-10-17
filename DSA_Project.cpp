@@ -132,25 +132,70 @@ public:
 };
 
 int main() {
-    Playlist playlist;
-    playlist.addSong("Song 1", "Artist A");
-    playlist.addSong("Song 2", "Artist B");
-    playlist.addSong("Song 3", "Artist C");
-
-    cout << "Current Playlist:" << endl;
-    playlist.display();
-
-    cout << "\nPlaying Playlist:" << endl;
-    playlist.play();
-
-    cout << "\nShuffling Playlist..." << endl;
-    playlist.shuffle();
-    playlist.display();
-
-    cout << "\nRemoving 'Song 2'..." << endl;
-    playlist.removeSong("Song 2");
-    playlist.display();
-
+	
+	string song;
+	string artist;
+	Playlist playlist;
+	
+	cout << "Music Playlist Manager System" << endl;
+	
+	int c , n = 1;
+	
+	do 
+	{
+		cout << "1. Add Song to Playlist \t2. Display Playlist \n3. Play Playlist \t\t4. Shuffle Playlist \n5. Remove Song from Playlist \t0. Exit"<<endl ;
+		cout<<endl;
+		cout << "Enter a choice : ";
+		cin >> c ;
+		cout<<endl;
+		switch(c)
+		{
+			case 1:	
+				int a ;
+				cout << "Enter the number of songs you want to add to the playlist : ";
+				cin >> a ;
+				for ( int i = 0 ; i < a ; i++)
+				{
+					cout << "Enter Song : ";
+					cin >> song;
+					cout << "Enter Artist : ";
+					cin >> artist;
+					playlist.addSong(song , artist);
+					cout<<endl;
+				}
+				cout << "Songs Added to the Playlist" << endl;
+				cout << endl;
+				break;
+				
+			case 2:
+				cout << "Current Playlist:" << endl;
+				playlist.display();
+				break;
+				
+			case 3:
+				cout << "\nPlaying Playlist:" << endl;
+	    		playlist.play();
+	    		break;
+	    		
+	    	case 4:
+	    		cout << "\nShuffling Playlist..." << endl;
+	    		playlist.shuffle();
+	    		playlist.display();
+	    		break;
+	    		
+	    	case 5:
+	    		cout << "Enter the name of song you want to remove :: "<< endl;
+	    		cin >> song;
+	    		cout << "\nRemoving Song "<< song << endl;
+			    playlist.removeSong(song);
+			    playlist.display();
+			    break;
+		}
+		
+		cout << "Enter 1 to continue and 0 to exit :: " << endl;
+		cin >> n;
+	
+	}while ( n != 0 && c != 0);
+	
     return 0;
 }
-
